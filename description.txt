@@ -1,0 +1,11 @@
+// A place for me to put down my thoughts about the MatChat program
+
+The host is written in pure C without a Mex interface.  Someone plays host and spins up the echo server on their computer.  Matlab will have a client interface that connects to the host (including the person who spun up the host on their computer).  The host keeps track of who is connected and sends messages to everyone except the sender.
+
+Need to handle
+
+	Connecting/disconnecting
+
+	Who sent the message and excluding them when broadcasting the message to everyone else
+
+	Interface with Matlab command line - make it look like Matlab code
