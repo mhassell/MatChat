@@ -9,3 +9,5 @@ Need to handle
 	Who sent the message and excluding them when broadcasting the message to everyone else
 
 	Interface with Matlab command line - make it look like Matlab code
+
+	Spin up a new thread with the echo function for each user that connects

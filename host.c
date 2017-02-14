@@ -9,6 +9,14 @@
 // the host is in pure C without a Mex interface.
 
 #define NCHARS   500
+#define MAX_USERS 10
+
+typedef struct connected_users{
+
+    int n_users;
+    str *user_addresses[MAX_USERS];
+
+};
 
 void echo(int PORTNUM){
    
@@ -29,7 +37,7 @@ void echo(int PORTNUM){
     
     // printf("Listening\n");
     
-    listen(listen_fd, 10);
+    listen(listen_fd, MAX_USERS);
     
     comm_fd = accept(listen_fd, (struct sockaddr *) NULL, NULL);
     printf("Connected\n");
@@ -49,6 +57,8 @@ void echo(int PORTNUM){
 int main(int argc, char* argv[]){
 
 	int PORTNUM;
+
+    struct
 
 
 	if(argc == 2){
