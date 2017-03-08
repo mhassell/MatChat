@@ -15,6 +15,7 @@ struct connected_users{
 
 	int num_users;
 	char (*ip_addresses[10])[15];
+	//char (*this_ip[15]);
 };
 
 int main(){
@@ -28,4 +29,5 @@ int main(){
     printf("%d\n", userPtr->num_users);
     printf("%s\n", *(userPtr->ip_addresses[0]));
 
+    return 0;
 }

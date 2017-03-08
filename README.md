@@ -1,2 +1,3 @@
 Making a chat server in Matlab...
 
+the scrap.py file is me copying the code from host.py and adding comments so I can understand it better. May eventually add a tex file
