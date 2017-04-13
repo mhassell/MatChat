@@ -8,9 +8,11 @@
 #include <string.h>
 #include <unistd.h>
 
+#define MSGLEN 500
+
 void echo(){
    
-    char str[100];
+    char str[MSGLEN];
     int listen_fd, comm_fd;
     struct sockaddr_in servaddr;
     
@@ -32,8 +34,8 @@ void echo(){
     
     while(1)
     {
-        bzero(str, 100);
-        read(comm_fd, str, 100);
+        bzero(str, MSGLEN);
+        read(comm_fd, str, MSG);
         mexPrintf("Echoing back - %s\n", str);
         write(comm_fd, str, strlen(str)+1);
     }

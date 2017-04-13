@@ -13,16 +13,21 @@
 #include <unistd.h>
 
 char str[100];
+pthread_mutex_t print_mutex;
 
 void *printFun(void *vargp){
+
+    pthread_mutex_lock(&print_mutex);
     
     mexPrintf("Starting...");
     
     while(1){
-        if(str[0] != 0){
+        if(strlen(str[0]) != 0){
             mexPrintf("Echoing back - %s\n", str);
         }
     }
+
+    pthread_mutex_unlock(&print_mutex);
     
     return NULL;
     
@@ -43,17 +48,18 @@ void *myThreadFun(void *vargp)
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htons(INADDR_ANY);
     servaddr.sin_port = htons(22000);
+
     
-    mexPrintf("Connecting to port %d\n", servaddr.sin_port);
+    //mexPrintf("Connecting to port %d\n", servaddr.sin_port);
     
     bind(listen_fd, (struct sockaddr *) &servaddr, sizeof(servaddr));
     
-    mexPrintf("Listening on port %d\n", servaddr.sin_port);
+    //mexPrintf("Listening on port %d\n", servaddr.sin_port);
     
     listen(listen_fd, 10);
     
     comm_fd = accept(listen_fd, (struct sockaddr *) NULL, NULL);
-    mexPrintf("Connected\n");
+    // mexPrintf("Connected\n");
 
     while(!done){
         bzero(str, 100);
