@@ -10,6 +10,10 @@
 
 #define MSGLEN 500
 
+void print2matlab(){
+    
+}
+
 void echo(){
    
     char str[MSGLEN];
